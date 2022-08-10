@@ -102,3 +102,18 @@ ios
 .expo
 .vscode
 ```
+
+Crie as settings do .vscode/settings.json
+
+```bash
+touch .vscode/settings.json
+```
+
+```bash
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true 
+  }
+}
+```
