@@ -103,7 +103,41 @@ ios
 .vscode
 ```
 
+## Como criar um pequeno projeto API com NodeJs
+
+Adicionar eslint para api com nodejs 
+
+Use a mesma ação de comando acima para adicionar o Eslint
+
+```bash
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "warn"
+  }
+}
+
+```
+
 Crie as settings do .vscode/settings.json
+
 
 ```bash
 touch .vscode/settings.json
