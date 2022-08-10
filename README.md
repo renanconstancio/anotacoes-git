@@ -109,6 +109,32 @@ Adicionar eslint para api com nodejs
 
 Use a mesma ação de comando acima para adicionar o Eslint
 
+Adicionar typescript
+
+```bash
+npm install typescript ts-node @types/node -D
+```
+
+Crie touch tsconfig.json na raiz do projeto e adicione
+
+```bash
+touch tsconfig.json
+```
+
+```bash
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true
+  }
+}
+```
+
+Adicionar essas configurações após o comando do ESLint acima
+
 ```bash
 {
   "env": {
@@ -137,7 +163,6 @@ Use a mesma ação de comando acima para adicionar o Eslint
 ```
 
 Crie as settings do .vscode/settings.json
-
 
 ```bash
 touch .vscode/settings.json
