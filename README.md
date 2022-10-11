@@ -89,7 +89,7 @@ Editar o arquivo .eslintrc.json da raiz
 Crie .eslintignore e .prettierignore
 
 ```bash
-touch .eslintignore & .prettierignore
+touch .eslintignore && tocuh .prettierignore
 ```
 
 ```bash
