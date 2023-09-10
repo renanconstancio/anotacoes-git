@@ -1,7 +1,7 @@
-## COMANDO PARA REMOVER AS IMAGENS ##
+## Comando para remover as imagens ##
 docker image rm -f <nome_da_imagem>
 
-## COMANDO PARA CRIAR NOVA IMAGENS ##
+## Comando para criar nova imagens ##
 docker build --no-cache -t <nome_da_imagem> -f ./Dockerfile .
 
 Para implementar isso ao docker compose 'services'
@@ -13,7 +13,7 @@ services:
     image: <image>
 ```
 
-## COMANDOS PARA CRIAR E HABILITAR PORTAS NO WINDOW COM WSL2 ##
+## Comandos para criar e habilitar portas no window com wsl2 ##
 
 Abra um terminal se sua preferência como administrador
 Copie e cole os comando abaixo
@@ -40,8 +40,6 @@ Para cria as portas desejada, rode o comando abaixo e adicione as portas desejad
 ```
 New-NetFirewallRule -DisplayName "WSL2 Port Bridge" -Direction Inbound -Action Allow -Protocol TCP -LocalPort <80,443,10000,3000,5000,19000...>
 ```
-
-
 
 ## Como criar um pequeno projeto Vite, React, React Native, Expo Eslint e Prettier
 
