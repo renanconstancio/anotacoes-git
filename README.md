@@ -1,3 +1,48 @@
+## COMANDO PARA REMOVER AS IMAGENS ##
+docker image rm -f <nome_da_imagem>
+
+## COMANDO PARA CRIAR NOVA IMAGENS ##
+docker build --no-cache -t <nome_da_imagem> -f ./Dockerfile .
+
+Para implementar isso ao docker compose 'services'
+
+```
+services:
+  <app>:
+    container_name: <container_name>
+    image: <image>
+```
+
+## COMANDOS PARA CRIAR E HABILITAR PORTAS NO WINDOW COM WSL2 ##
+
+Abra um terminal se sua preferência como administrador
+Copie e cole os comando abaixo
+
+Para listar as portas já habilitadas no netsh
+
+```
+netsh interface portproxy show v4tov4
+```
+
+Para adicionar uma nova porta
+
+* listenport: porta a habilitar
+* listenaddress: ip a habilitar, "ip da localhost"
+* connectport: ip da ponte
+* connectaddress: ip do wsl
+
+```
+netsh interface portproxy add v4tov4 listenport=<porta> listenaddress=0.0.0.0 connectport=<porta> connectaddress=<ip>
+```
+
+Para cria as portas desejada, rode o comando abaixo e adicione as portas desejadas
+
+```
+New-NetFirewallRule -DisplayName "WSL2 Port Bridge" -Direction Inbound -Action Allow -Protocol TCP -LocalPort <80,443,10000,3000,5000,19000...>
+```
+
+
+
 ## Como criar um pequeno projeto Vite, React, React Native, Expo Eslint e Prettier
 
 Para os primeiros passos, verificar ou instalar node npm ou yarn
