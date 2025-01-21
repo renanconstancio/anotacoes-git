@@ -10,7 +10,7 @@ npm init -y
 npm install express @prisma/client dotenv cors express-async-errors zod
 ```
 ```bash
-npm install @prisma/client typescript ts-node-dev eslint prettier jest @types/node @types/express ts-jest @typescript-eslint/parser @typescript-eslint/eslint-plugin husky lint-staged --save-dev
+npm install @prisma/client typescript ts-node-dev eslint eslint-config-prettier prettier jest @types/node @types/express ts-jest @typescript-eslint/parser @typescript-eslint/eslint-plugin husky lint-staged --save-dev
 ```
 
  - Adicione o TypeScript
