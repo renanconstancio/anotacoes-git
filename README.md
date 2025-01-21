@@ -1,3 +1,128 @@
+## Comando para criar uma nova API "express, typescript, jest, eslint, prettier husk ling-staged"
+
+- Crie um pasta, e inicialize os comando abaixo
+- Atualização 01/2025
+
+```bash
+npm init -y
+```
+```bash
+npm install express @prisma/client dotenv cors express-async-errors zod
+```
+```bash
+npm install @prisma/client typescript ts-node-dev eslint prettier jest @types/node @types/express ts-jest @typescript-eslint/parser @typescript-eslint/eslint-plugin husky lint-staged --save-dev
+```
+
+ - Adicione o TypeScript
+```bash
+touch tsconfig.json
+```
+
+```bash
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+* Configure o Eslint
+```bash
+touch .eslint.json .eslintrcignore
+``` 
+```bash
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {}
+}
+```
+
+* Configure o Prettier
+```bash
+touch .prettier.json .eslintrcignore
+``` 
+```bash
+{
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
+``` 
+
+* Configure o jest para rodar com typescript
+
+```bash
+npx ts-jest config:init
+```
+```bash
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  modulePathIgnorePatterns: ['dist'],
+};
+```
+
+```bash
+npx husky-init && npm install
+```
+```bash
+npm set-script prepare "husky install"
+```
+```bash
+npm install -D lint-staged
+```
+```bash
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+* Atualizar o package.json
+
+```bash
+"lint-staged": {
+  "**/*.{ts,js}": [
+    "eslint --fix",
+    "prettier --write"
+  ]
+}
+"scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "lint": "eslint . --ext .ts",
+  "test": "jest",
+  "format": "prettier --write ."
+}
+```
+* Configure o prisma
+```bash
+npx prisma init
+```
+
 ## Comando para remover as imagens ##
 docker image rm -f <nome_da_imagem>
 
@@ -13,33 +138,6 @@ services:
     image: <image>
 ```
 
-## Comandos para criar e habilitar portas no window com wsl2 ##
-
-Abra um terminal se sua preferência como administrador
-Copie e cole os comando abaixo
-
-Para listar as portas já habilitadas no netsh
-
-```
-netsh interface portproxy show v4tov4
-```
-
-Para adicionar uma nova porta
-
-* listenport: porta a habilitar
-* listenaddress: ip a habilitar, "ip da localhost"
-* connectport: ip da ponte
-* connectaddress: ip do wsl
-
-```
-netsh interface portproxy add v4tov4 listenport=<porta> listenaddress=0.0.0.0 connectport=<porta> connectaddress=<ip>
-```
-
-Para cria as portas desejada, rode o comando abaixo e adicione as portas desejadas
-
-```
-New-NetFirewallRule -DisplayName "WSL2 Port Bridge" -Direction Inbound -Action Allow -Protocol TCP -LocalPort <80,443,10000,3000,5000,19000...>
-```
 
 ## Como criar um pequeno projeto Vite, React, React Native, Expo Eslint e Prettier
 
@@ -176,7 +274,7 @@ touch tsconfig.json
 }
 ```
 
-Adicionar essas configurações após o comando do ESLint acima
+## Adicionar essas configurações após o comando do ESLint acima
 
 ```bash
 {
